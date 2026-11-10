@@ -1,0 +1,694 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BOOTH 5 - Toy Story</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Fredoka', sans-serif;
+    background: linear-gradient(
+        180deg,
+        #45b5f5 0%,
+        #a9e2ff 65%,
+        #fff1bd 100%
+    );
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* BACKGROUND */
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cloud {
+    position: absolute;
+    font-size: clamp(35px, 6vw, 75px);
+    animation: cloudMove 6s ease-in-out infinite;
+}
+
+.cloud1 {
+    top: 5%;
+    left: 3%;
+}
+
+.cloud2 {
+    top: 15%;
+    right: 4%;
+    animation-delay: 2s;
+}
+
+.cloud3 {
+    bottom: 5%;
+    left: 5%;
+    animation-delay: 1s;
+}
+
+@keyframes cloudMove {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* BINTANG */
+.star {
+    position: absolute;
+    color: white;
+    animation: sparkle 1.5s infinite alternate;
+}
+
+.star1 {
+    top: 35%;
+    left: 12%;
+    font-size: 25px;
+}
+
+.star2 {
+    top: 60%;
+    right: 10%;
+    font-size: 30px;
+}
+
+.star3 {
+    top: 8%;
+    right: 25%;
+    font-size: 20px;
+}
+
+@keyframes sparkle {
+    from {
+        opacity: .3;
+        transform: scale(.7) rotate(0deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.3) rotate(30deg);
+    }
+}
+
+/* KONTEN */
+header, nav, main, footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 9px 10px 3px;
+    flex-shrink: 0;
+}
+
+.booth {
+    display: inline-block;
+    background: #ffce43;
+    color: #71451e;
+    border: 3px solid white;
+    border-radius: 30px;
+    padding: 5px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 4px 0 #d69d29;
+    transform: rotate(-2deg);
+}
+
+header h1 {
+    color: white;
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow:
+        3px 4px 0 #3565a0,
+        5px 6px 0 #234875;
+    margin-top: 7px;
+    animation: titleMove 3s infinite ease-in-out;
+}
+
+@keyframes titleMove {
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+header p {
+    font-size: 14px;
+    color: #28557e;
+    font-weight: 600;
+    margin-top: 3px;
+}
+
+.decoration {
+    margin-top: 3px;
+    font-size: 20px;
+    letter-spacing: 8px;
+}
+
+/* TAB MENU */
+.menu-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    padding: 7px;
+    flex-shrink: 0;
+}
+
+.tab {
+    border: 2px solid white;
+    background: #ffffffd9;
+    color: #31547d;
+    padding: 7px 17px;
+    border-radius: 25px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #75a8ca;
+    transition: .3s;
+}
+
+.tab:hover,
+.tab.active {
+    background: #ffcf42;
+    color: #68431e;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 0 #d59c2b;
+}
+
+/* KATALOG */
+.container {
+    width: 94%;
+    max-width: 1200px;
+    flex: 1;
+    min-height: 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: 100%;
+    gap: 17px;
+    align-items: center;
+}
+
+/* CARD */
+.card {
+    background: white;
+    border: 4px solid white;
+    border-radius: 22px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 8px 0 #3987bd;
+    transition: .35s;
+    animation: cardAppear .7s ease both;
+}
+
+.card:nth-child(2) {
+    animation-delay: .1s;
+}
+
+.card:nth-child(3) {
+    animation-delay: .2s;
+}
+
+.card:nth-child(4) {
+    animation-delay: .3s;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card:hover {
+    transform: translateY(-7px) rotate(-1deg);
+    box-shadow: 0 13px 0 #3987bd;
+}
+
+/* GAMBAR - TIDAK DIPOTONG */
+.food-image {
+    width: 100%;
+    height: clamp(115px, 22vh, 175px);
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    background: #fffaf0;
+    transition: .4s;
+}
+
+.card:hover .food-image {
+    transform: scale(1.03);
+}
+
+/* DETAIL MENU */
+.card-content {
+    padding: 10px 6px 14px;
+}
+
+.card h2 {
+    color: #315b8c;
+    font-size: clamp(13px, 1.6vw, 18px);
+    min-height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card p {
+    color: #8a8a8a;
+    font-size: 12px;
+    margin: 5px 0 10px;
+}
+
+.price {
+    display: inline-block;
+    padding: 6px 18px;
+    background: #ffce43;
+    color: #63421e;
+    border-radius: 25px;
+    font-size: 17px;
+    font-weight: 700;
+    box-shadow: 0 4px 0 #d69c2b;
+}
+
+/* FILTER */
+.card.hide {
+    display: none;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 7px 5px 9px;
+    color: #31547d;
+    font-weight: 600;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+footer span {
+    color: #df7434;
+}
+
+/* LAPTOP PENDEK */
+@media (max-height: 700px) {
+
+    header {
+        padding-top: 5px;
+    }
+
+    header h1 {
+        font-size: 34px;
+        margin-top: 4px;
+    }
+
+    header p {
+        font-size: 12px;
+        margin-top: 2px;
+    }
+
+    .decoration {
+        display: none;
+    }
+
+    .menu-tabs {
+        padding: 5px;
+    }
+
+    .food-image {
+        height: clamp(90px, 19vh, 135px);
+    }
+
+    .card-content {
+        padding: 7px 5px 11px;
+    }
+
+    .card h2 {
+        min-height: 32px;
+    }
+
+    footer {
+        padding: 4px;
+    }
+}
+
+/* HP DAN TABLET */
+@media (max-width: 700px) {
+
+    header {
+        padding-top: 7px;
+    }
+
+    header h1 {
+        font-size: clamp(27px, 7vw, 39px);
+    }
+
+    header p {
+        font-size: 11px;
+    }
+
+    .decoration {
+        font-size: 17px;
+        margin-top: 2px;
+    }
+
+    .menu-tabs {
+        gap: 6px;
+        padding: 5px;
+    }
+
+    .tab {
+        padding: 6px 11px;
+        font-size: 11px;
+    }
+
+    .container {
+        width: 92%;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .card {
+        border-width: 3px;
+        border-radius: 15px;
+    }
+
+    .food-image {
+        height: clamp(80px, 15vh, 120px);
+        object-fit: contain;
+    }
+
+    .card-content {
+        padding: 5px 4px 9px;
+    }
+
+    .card h2 {
+        font-size: 13px;
+        min-height: 28px;
+    }
+
+    .card p {
+        font-size: 10px;
+        margin: 3px 0 7px;
+    }
+
+    .price {
+        font-size: 13px;
+        padding: 5px 12px;
+    }
+
+    footer {
+        font-size: 10px;
+        padding: 5px;
+    }
+}
+
+/* HP LAYAR PENDEK */
+@media (max-width: 700px) and (max-height: 650px) {
+
+    header h1 {
+        font-size: 27px;
+    }
+
+    .decoration {
+        display: none;
+    }
+
+    .food-image {
+        height: 75px;
+    }
+
+    .card-content {
+        padding: 4px;
+    }
+
+    .card p {
+        margin: 2px 0 5px;
+    }
+
+    .menu-tabs {
+        padding: 3px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="background">
+
+    <div class="cloud cloud1">☁️</div>
+    <div class="cloud cloud2">☁️</div>
+    <div class="cloud cloud3">☁️</div>
+
+    <div class="star star1">✦</div>
+    <div class="star star2">✧</div>
+    <div class="star star3">✦</div>
+
+</div>
+
+<!-- HEADER -->
+<header>
+
+    <div class="booth">
+        ⭐ BAZAR BOOTH 5 ⭐
+    </div>
+
+    <h1>TOY STORY MENU!</h1>
+
+    <p>✨ Delicious Food, Happy Moments! ✨</p>
+
+    <div class="decoration">
+        🚀 ⭐ 🧸 ⭐ 🚀
+    </div>
+
+</header>
+
+<!-- KATEGORI -->
+<nav class="menu-tabs">
+
+    <button class="tab active"
+    onclick="filterMenu('all', this)">
+        ⭐ Semua
+    </button>
+
+    <button class="tab"
+    onclick="filterMenu('pedas', this)">
+        🌶 Pedas
+    </button>
+
+    <button class="tab"
+    onclick="filterMenu('tradisional', this)">
+        🌈 Tradisional
+    </button>
+
+    <button class="tab"
+    onclick="filterMenu('gurih', this)">
+        🍄 Gurih
+    </button>
+
+    <button class="tab"
+    onclick="filterMenu('manis', this)">
+        🍦 Manis
+    </button>
+
+</nav>
+
+<!-- MENU -->
+<main class="container">
+
+    <div class="menu-grid">
+
+        <!-- MENU 1: PENTOL -->
+        <div class="card" data-category="pedas">
+
+            <img
+                class="food-image"
+                src="pentol_bakar.jpeg"
+                alt="Pentol Mercon">
+
+            <div class="card-content">
+
+                <h2>🌶️ Pentol Mercon</h2>
+
+                <p>Pedasnya bikin nagih!</p>
+
+                <div class="price">
+                    Rp5.000
+                </div>
+
+            </div>
+        </div>
+
+        <!-- MENU 2: KLEPON -->
+        <div class="card"
+        data-category="tradisional manis">
+
+            <img
+                class="food-image"
+                src="klepon.jpeg"
+                alt="Klepon Warna Warni">
+
+            <div class="card-content">
+
+                <h2>🌈 Klepon Warna Warni</h2>
+
+                <p>Manis dan penuh warna!</p>
+
+                <div class="price">
+                    Rp5.000
+                </div>
+
+            </div>
+        </div>
+
+        <!-- MENU 3: TAHU JAMUR -->
+        <div class="card" data-category="gurih">
+
+            <img
+                class="food-image"
+                src="tahu.jpeg"
+                alt="Tahu Jamur">
+
+            <div class="card-content">
+
+                <h2>🍄 Tahu Jamur</h2>
+
+                <p>Gurih dan renyah!</p>
+
+                <div class="price">
+                    Rp5.000
+                </div>
+
+            </div>
+        </div>
+
+        <!-- MENU 4: ICE CREAM -->
+        <div class="card" data-category="manis">
+
+            <img
+                class="food-image"
+                src="ice.jpeg"
+                alt="Ice Cream Chockies">
+
+            <div class="card-content">
+
+                <h2>🍦 Ice Cream Chockies</h2>
+
+                <p>Manis, dingin, yummy!</p>
+
+                <div class="price">
+                    Rp5.000
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+
+    ⭐ THANK YOU FOR VISITING BOOTH 5! ⭐
+
+    <br>
+
+    <span>To infinity and beyond! 🚀</span>
+
+</footer>
+
+<script>
+
+// FILTER MENU
+function filterMenu(category, button) {
+
+    const cards = document.querySelectorAll('.card');
+    const tabs = document.querySelectorAll('.tab');
+
+    // HAPUS STATUS AKTIF
+    tabs.forEach(tab => {
+        tab.classList.remove('active');
+    });
+
+    // AKTIFKAN TOMBOL
+    button.classList.add('active');
+
+    // FILTER KARTU MENU
+    cards.forEach(card => {
+
+        const categories =
+            card.dataset.category.split(' ');
+
+        if (
+            category === 'all' ||
+            categories.includes(category)
+        ) {
+
+            card.classList.remove('hide');
+
+        } else {
+
+            card.classList.add('hide');
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
